@@ -4,7 +4,7 @@ metadata:
   name: internal-policies
 policyDefaults:
   namespace: dsta-policies
-  policySets: []
+  policySets: [admission,best-practise,operator]
   placement:
     labelSelector:
       rhdp_usage: development
@@ -23,3 +23,12 @@ policies:
     manifests:
       - path: bestpractise/kubeadmin-pass.yaml
     complianceType: mustnothave
+  - name: policyset-admission
+    manifests:
+      - path: policyset/policyset-admission.yaml
+  - name: policyset-best-practise
+    manifests:
+      - path: policyset/policyset-best-practise.yaml
+  - name: policyset-operator
+    manifests:
+      - path: policyset/policyset-operator.yaml

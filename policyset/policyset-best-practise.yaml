@@ -1,0 +1,10 @@
+apiVersion: policy.open-cluster-management.io/v1beta1
+kind: PolicySet
+metadata:
+  name: best-practise
+  namespace: dsta-policies
+spec:
+  description: DSTA Best Practise
+  policies:
+  - dsta-best-practise-certexpiry
+  - policy-dsta-bestpractise-detect-depreciated-apis
