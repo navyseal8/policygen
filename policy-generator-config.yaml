@@ -1,0 +1,25 @@
+apiVersion: policy.open-cluster-management.io/v1
+kind: PolicyGenerator
+metadata:
+  name: internal-policies
+policyDefaults:
+  namespace: dsta-policies
+  policySets: []
+  placement:
+    labelSelector:
+      rhdp_usage: development
+  remediationAction: inform
+policies:
+  - name: configuration
+    manifests:
+      - path: configmap.yaml
+  - name: openshift-gitops-installed
+    manifests:
+      - path: operators/gitops-operator.yaml
+  - name: openshift-compliance-installed
+    manifests:
+      - path: operators/compliance-operator.yaml
+  - name: kubeadmin-removed
+    manifests:
+      - path: bestpractise/kubeadmin-pass.yaml
+    complianceType: mustnothave
