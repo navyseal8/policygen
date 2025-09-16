@@ -23,3 +23,7 @@ policies:
     manifests:
       - path: bestpractise/kubeadmin-pass.yaml
     complianceType: mustnothave
+  - name: kkkkk
+    manifests;
+      - path: admission/policy-dsta-admission-namespace.yaml
+    complianceType: musthave
