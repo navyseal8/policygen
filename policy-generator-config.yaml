@@ -13,12 +13,14 @@ policies:
   - name: configuration
     manifests:
       - path: configmap.yaml
-  - name: openshift-gitops-installed
+  - name: ocbc-operator-openshift-gitops
     manifests:
       - path: operators/gitops-operator.yaml
-  - name: openshift-compliance-installed
+    complianceType: musthave
+  - name: ocbc-operator-openshift-compliance
     manifests:
       - path: operators/compliance-operator.yaml
+    omplianceType: musthave
   - name: kubeadmin-removed
     manifests:
       - path: bestpractise/kubeadmin-pass.yaml
