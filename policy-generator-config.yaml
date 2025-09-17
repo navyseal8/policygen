@@ -26,4 +26,4 @@ policies:
   - name: kkkkk
     manifests:
       - path: admission/policy-dsta-admission-namespace.yaml
-    complianceType: musthave
+    complianceType: enforce
