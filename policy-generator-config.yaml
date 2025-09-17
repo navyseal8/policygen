@@ -20,7 +20,7 @@ policies:
   - name: ocbc-operator-openshift-compliance
     manifests:
       - path: operators/compliance-operator.yaml
-    omplianceType: musthave
+    complianceType: musthave
   - name: kubeadmin-removed
     manifests:
       - path: bestpractise/kubeadmin-pass.yaml
