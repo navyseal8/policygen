@@ -15,7 +15,7 @@ spec:
               type: array
   targets:
   - rego: |
-    package k8srequiredlabels
+      package k8srequiredlabels
       violation[{"msg": msg, "details": {"missing_labels": missing}}] {
         provided := {label | input.review.object.metadata.labels[label]}
         required := {label | label := input.parameters.labels[_]}
