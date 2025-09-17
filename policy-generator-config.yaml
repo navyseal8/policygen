@@ -28,8 +28,10 @@ policies:
       - path: admission/policy-dsta-admission-namespace.yaml
     complianceType: enforce
   - name: ocbc-admission-no-resource-limits 
+    manifests:
       - path: admission/policy-dsta-admission-resource-limits.yaml
     complianceType: enforce
   - name: ocbc-admission
+    manifests:
       - path: admission/policy-dsta-admission.yaml
     compliancetype: enforce
