@@ -25,15 +25,15 @@ policies:
     complianceType: mustnothave
   - name: ocbc-admission-namespace
     manifests:
-      - path: admission/policy-dsta-admission-namespace.yaml
-    complianceType: enforce
+      - path: admission/policy-admission-namespace.yaml
+    complianceType: musthave
   - name: ocbc-admission-no-resource-limits 
     manifests:
-      - path: admission/policy-dsta-admission-resource-limits.yaml
-    complianceType: enforce
+      - path: admission/policy-admission-resource-limits.yaml
+    complianceType: musthave
   - name: ocbc-admission
     manifests:
-      - path: admission/policy-dsta-admission.yaml
+      - path: admission/policy-operator-admission.yaml
     complianceType: musthave
   - name: ocbc-bestpractise-certexpiry
     manifests:
