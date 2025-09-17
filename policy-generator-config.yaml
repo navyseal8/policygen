@@ -38,8 +38,8 @@ policies:
   - name: ocbc-bestpractise-certexpiry
     manifests:
       - path: bestpractise/policy-dsta-bestpractise-certexpiry.yaml
-    complianceType: musthave
-  - name: ocbc-bestpractise-apidepreciate
+    complianceType: mustnothave
+  - name: ocbc-bestpractise-depreciateapi
     manifests:
       - path: bestpractise/policy-dsta-bestpractise-depreciateAPIs.yaml
-    complianceType: musthave
+    complianceType: mustnothave
