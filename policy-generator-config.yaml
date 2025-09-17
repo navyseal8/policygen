@@ -23,7 +23,13 @@ policies:
     manifests:
       - path: bestpractise/kubeadmin-pass.yaml
     complianceType: mustnothave
-  - name: kkkkk
+  - name: ocbc-admission-namespace
     manifests:
       - path: admission/policy-dsta-admission-namespace.yaml
     complianceType: enforce
+  - name: ocbc-admission-no-resource-limits 
+      - path: admission/policy-dsta-admission-resource-limits.yaml
+    complianceType: enforce
+  - name: ocbc-admission
+      - path: admission/policy-dsta-admission.yaml
+    compliancetype: enforce
