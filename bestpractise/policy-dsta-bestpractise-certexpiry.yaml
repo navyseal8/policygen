@@ -1,0 +1,14 @@
+apiVersion: policy.open-cluster-management.io/v1
+kind: CertificatePolicy
+metadata:
+  name: policy-certificate
+spec:
+  minimumDuration: 300h
+  namespaceSelector:
+    exclude:
+      - kube-*
+    include:
+      - default
+      - openshift-ingress
+  remediationAction: inform
+  severity: high

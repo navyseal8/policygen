@@ -1,0 +1,17 @@
+apiVersion: policy.open-cluster-management.io/v1
+kind: ConfigurationPolicy
+metadata:
+  name: deprecated-deployment-extensions-v1beta1
+spec:
+  namespaceSelector:
+    exclude:
+      - kube-*
+      - openshift-*
+    include: ["*"]
+  remediationAction: inform
+  severity: high
+  object-templates-raw: |
+    - complianceType: mustnothave
+      objectDefinition:
+        apiVersion: extensions/v1beta1
+        kind: Deployment

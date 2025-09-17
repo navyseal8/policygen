@@ -35,3 +35,11 @@ policies:
     manifests:
       - path: admission/policy-dsta-admission.yaml
     complianceType: enforce
+  - name: ocbc-bestpractise-certexpiry
+    manifests:
+      - path: bestpractise/policy-dsta-bestpractise-certexpiry.yaml
+    complianceType: enforce
+  - name: ocbc-bestpractise-apidepreciate
+    manifests:
+      - path: bestpractise/policy-dsta-bestpractise-depreciateAPIs.yaml
+    complianceType: inform
