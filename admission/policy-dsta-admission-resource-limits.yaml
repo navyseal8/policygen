@@ -1,0 +1,55 @@
+apiVersion: templates.gatekeeper.sh/v1beta1
+kind: ConstraintTemplate
+metadata:
+  name: k8srequiredresourcelimits
+spec:
+  crd:
+    spec:
+      names:
+        kind: K8sRequiredResourceLimits
+  targets:
+  - rego: |
+      package k8srequiredresourcelimits
+      violation[{"msg": msg}] {
+        input.review.kind.kind == "Pod"
+        containers := input.review.object.spec.containers
+        some i
+        container := containers[i]
+        not has_resource_requests(container)
+        msg := sprintf("Container '%s' is missing resource requests for CPU and/or memory", [container.name])
+      }
+      violation[{"msg": msg}] {
+        input.review.kind.kind == "Pod"
+        containers := input.review.object.spec.containers
+        some i
+        container := containers[i]
+        not has_resource_limits(container)
+        msg := sprintf("Container '%s' is missing resource limits for CPU and/or memory", [container.name])
+      }
+      has_resource_requests(container) {
+        container.resources.requests["cpu"]
+        container.resources.requests["memory"]
+      }
+      has_resource_limits(container) {
+        container.resources.limits["cpu"]
+        container.resources.limits["memory"]
+      }
+    target: admission.k8s.gatekeeper.sh
+---
+apiVersion: constraints.gatekeeper.sh/v1beta1
+kind: K8sRequiredResourceLimits
+metadata:
+  name: require-resource-limits
+spec:
+  enforcementAction: enforce
+  match:
+    excludedNamespaces:
+    - kube-system
+    - kube-public
+    - openshift-*
+    - open-cluster-management-*
+    kinds:
+    - apiGroups:
+      - ""
+      kinds:
+      - Pod
